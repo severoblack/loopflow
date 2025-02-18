@@ -95,10 +95,9 @@ export default {
   <OnClickOutside v-if="isHelpCenter" @trigger="showHelpCenterMenu = false">
     <button
       v-tooltip.top="$t(`SIDEBAR.${name}`)"
-      class="relative flex items-center justify-center w-10 h-10 my-2 rounded-lg text-slate-700 dark:text-slate-100 hover:!bg-slate-25 dark:hover:!bg-slate-700 dark:hover:text-slate-100 hover:text-slate-600"
+      class="relative flex items-center w-full px-4 py-3 text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200 rounded-lg group"
       :class="{
-        'bg-woot-50 dark:bg-slate-800 text-woot-500 hover:bg-woot-50':
-          isHelpCenterSelected,
+        'bg-slate-800 text-slate-100': isHelpCenterSelected,
       }"
       @click="toggleHelpCenterMenu"
     >
@@ -121,10 +120,9 @@ export default {
     <a
       v-tooltip.right="$t(`SIDEBAR.${name}`)"
       :href="href"
-      class="relative flex items-center justify-center w-10 h-10 my-2 rounded-lg text-slate-700 dark:text-slate-100 hover:bg-slate-25 dark:hover:bg-slate-700 dark:hover:text-slate-100 hover:text-slate-600"
+      class="relative flex items-center w-full px-4 py-3 text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200 rounded-lg group"
       :class="{
-        'bg-woot-50 dark:bg-slate-800 text-woot-500 hover:bg-woot-50':
-          isActive || isChildMenuActive,
+        'bg-slate-800 text-slate-100': isActive || isChildMenuActive,
       }"
       :rel="openInNewPage ? 'noopener noreferrer nofollow' : undefined"
       :target="openInNewPage ? '_blank' : undefined"
@@ -132,14 +130,15 @@ export default {
     >
       <fluent-icon
         :icon="icon"
+        class="w-5 h-5 mr-3"
         :class="{
-          'text-woot-500': isActive || isChildMenuActive,
+          'text-slate-100': isActive || isChildMenuActive,
         }"
       />
-      <span class="sr-only">{{ name }}</span>
+      <span class="text-sm font-medium">{{ $t(`SIDEBAR.${name}`) }}</span>
       <span
         v-if="count"
-        class="absolute bg-yellow-500 text-black-900 -top-1 -right-1"
+        class="flex items-center justify-center px-2 py-0.5 text-xs font-medium bg-violet-500 text-white rounded-full ml-auto"
       >
         {{ count }}
       </span>

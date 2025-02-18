@@ -98,9 +98,9 @@ export default {
 
 <template>
   <div
-    class="conversation-details-wrap bg-n-background"
+    class="conversation-details-wrap bg-slate-900"
     :class="{
-      'border-l rtl:border-l-0 rtl:border-r border-n-weak': !isOnExpandedLayout,
+      'border-l rtl:border-l-0 rtl:border-r border-slate-800/30': !isOnExpandedLayout,
     }"
   >
     <ConversationHeader
@@ -114,7 +114,7 @@ export default {
     <woot-tabs
       v-if="dashboardApps.length && currentChat.id"
       :index="activeIndex"
-      class="-mt-px bg-white dashboard-app--tabs dark:bg-slate-900"
+      class="-mt-px bg-slate-900 dashboard-app--tabs border-b border-slate-800/30"
       @change="onDashboardAppTabChange"
     >
       <woot-tabs-item
@@ -158,13 +158,17 @@ export default {
 <style lang="scss" scoped>
 .conversation-details-wrap {
   @apply flex flex-col min-w-0 w-full;
-}
 
-.dashboard-app--tabs {
-  ::v-deep {
-    .tabs-title {
-      a {
-        @apply pb-2 pt-1;
+  .dashboard-app--tabs {
+    ::v-deep {
+      .tabs-title {
+        a {
+          @apply pb-2 pt-1 px-4 text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors duration-200;
+
+          &.active {
+            @apply text-slate-100 border-b-2 border-violet-500;
+          }
+        }
       }
     }
   }

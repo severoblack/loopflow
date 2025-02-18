@@ -586,28 +586,27 @@ export default {
 <style lang="scss">
 .wrap {
   > .bubble {
-    @apply min-w-[128px];
+    @apply min-w-[128px] rounded-2xl px-4 py-3 mb-2;
 
     &.is-unsupported {
-      @apply text-xs max-w-[300px] border-dashed border border-slate-200 text-slate-600 dark:text-slate-200 bg-slate-50 dark:bg-slate-700 dark:border-slate-500;
+      @apply text-xs max-w-[300px] border border-slate-700/30 text-slate-400 bg-slate-800/50;
 
       .message-text--metadata .time {
-        @apply text-slate-400 dark:text-slate-300;
+        @apply text-slate-500;
       }
     }
 
     &.is-image,
     &.is-video {
-      @apply p-0 overflow-hidden;
+      @apply p-0 overflow-hidden rounded-2xl bg-slate-800;
 
       .image,
       .video {
-        @apply max-w-[20rem] p-0.5;
+        @apply max-w-[20rem] p-1;
 
         > img,
         > video {
-          /** ensure that the bubble radius and image radius match*/
-          @apply rounded-[0.4rem];
+          @apply rounded-xl;
         }
 
         > video {
@@ -648,22 +647,22 @@ export default {
     }
 
     &.is-from-bot {
-      @apply bg-violet-400 dark:bg-violet-400;
+      @apply bg-violet-500/10 text-violet-500;
 
       .message-text--metadata .time {
-        @apply text-violet-50 dark:text-violet-50;
+        @apply text-violet-400;
       }
 
       &.is-private .message-text--metadata .time {
-        @apply text-slate-400 dark:text-slate-400;
+        @apply text-slate-400;
       }
     }
 
     &.is-failed {
-      @apply bg-red-200 dark:bg-red-200;
+      @apply bg-red-500/10 text-red-500;
 
       .message-text--metadata .time {
-        @apply text-red-50 dark:text-red-50;
+        @apply text-red-400;
       }
     }
   }

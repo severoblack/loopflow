@@ -71,15 +71,17 @@ export default {
 
 <template>
   <div
-    class="flex flex-col justify-between w-16 h-full bg-white border-r dark:bg-slate-900 border-slate-50 dark:border-slate-800/50 rtl:border-l rtl:border-r-0"
+    class="flex flex-col justify-between w-[280px] h-full bg-slate-900 border-r border-slate-800/30 rtl:border-l rtl:border-r-0 transition-all duration-200 ease-in-out"
   >
-    <div class="flex flex-col items-center">
-      <Logo
-        :source="logoSource"
-        :name="installationName"
-        :account-id="accountId"
-        class="m-4 mb-10"
-      />
+    <div class="flex flex-col">
+      <div class="px-4 py-6">
+        <Logo
+          :source="logoSource"
+          :name="installationName"
+          :account-id="accountId"
+          class="mb-8"
+        />
+      </div>
       <PrimaryNavItem
         v-for="menuItem in menuItems"
         :id="menuItem.key"
@@ -90,12 +92,12 @@ export default {
         :is-child-menu-active="menuItem.key === activeMenuItem"
       />
     </div>
-    <div class="flex flex-col items-center justify-end pb-6">
+    <div class="flex flex-col justify-end px-4 py-4 mt-auto border-t border-slate-800/30">
       <a
         v-if="!isACustomBrandedInstance"
         v-tooltip.right="$t(`SIDEBAR.DOCS`)"
         :href="helpDocsURL"
-        class="relative flex items-center justify-center w-10 h-10 my-2 rounded-lg text-slate-700 dark:text-slate-100 hover:bg-slate-25 dark:hover:bg-slate-700 dark:hover:text-slate-100 hover:text-slate-600"
+        class="flex items-center px-3 py-2 my-1 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition-colors duration-200"
         rel="noopener noreferrer nofollow"
         target="_blank"
       >

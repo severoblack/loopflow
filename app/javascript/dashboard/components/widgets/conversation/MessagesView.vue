@@ -469,7 +469,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col justify-between flex-grow h-full min-w-0 m-0">
+  <div class="flex flex-col justify-between flex-grow h-full min-w-0 m-0 bg-slate-900">
     <Banner
       v-if="!currentChat.can_reply"
       color-scheme="alert"
@@ -483,7 +483,7 @@ export default {
         variant="smooth"
         size="tiny"
         color-scheme="secondary"
-        class="box-border fixed z-10 bg-white border border-r-0 border-solid rounded-bl-calc rtl:rotate-180 rounded-tl-calc border-n-weak"
+        class="box-border fixed z-10 bg-slate-800 border border-r-0 border-solid rounded-bl-calc rtl:rotate-180 rounded-tl-calc border-slate-700/30 text-slate-400 hover:text-slate-100 transition-colors duration-200"
         :class="isInboxView ? 'top-52 md:top-40' : 'top-32'"
         :icon="isRightOrLeftIcon"
         @click="onToggleContactPanel"
@@ -528,7 +528,7 @@ export default {
         />
       </template>
     </NextMessageList>
-    <ul v-else class="conversation-panel">
+    <ul v-else class="conversation-panel px-6 py-4 overflow-y-auto">
       <transition name="slide-up">
         <!-- eslint-disable-next-line vue/require-toggle-inside-transition -->
         <li class="min-h-[4rem]">
@@ -550,8 +550,11 @@ export default {
         :inbox-supports-reply-to="inboxSupportsReplyTo"
         :in-reply-to="getInReplyToMessage(message)"
       />
-      <li v-show="unreadMessageCount != 0" class="unread--toast">
-        <span>
+      <li 
+        v-show="unreadMessageCount != 0" 
+        class="flex justify-center my-4"
+      >
+        <span class="px-4 py-1.5 bg-violet-500/10 text-violet-500 rounded-full text-sm font-medium">
           {{ unreadMessageCount > 9 ? '9+' : unreadMessageCount }}
           {{
             unreadMessageCount > 1
@@ -582,10 +585,10 @@ export default {
       />
     </ul>
     <div
-      class="conversation-footer"
+      class="conversation-footer border-t border-slate-800/30"
       :class="{
         'modal-mask': isPopOutReplyBox,
-        'bg-n-background': showNextBubbles && !isPopOutReplyBox,
+        'bg-slate-900': showNextBubbles && !isPopOutReplyBox,
       }"
     >
       <div
@@ -593,7 +596,7 @@ export default {
         class="absolute flex items-center w-full h-0 -top-7"
       >
         <div
-          class="flex py-2 pr-4 pl-5 shadow-md rounded-full bg-white dark:bg-slate-700 text-n-slate-11 text-xs font-semibold my-2.5 mx-auto"
+          class="flex py-2 pr-4 pl-5 shadow-md rounded-full bg-slate-800 text-slate-300 text-xs font-medium my-2.5 mx-auto"
         >
           {{ typingUserNames }}
           <img

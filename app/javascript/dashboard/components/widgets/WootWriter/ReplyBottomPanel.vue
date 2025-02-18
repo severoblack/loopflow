@@ -254,7 +254,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex justify-between p-3" :class="wrapClass">
+  <div class="flex justify-between p-4 border-t border-slate-800/30" :class="wrapClass">
     <div class="left-wrap">
       <NextButton
         v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_EMOJI_ICON')"
@@ -381,11 +381,23 @@ export default {
 
 <style lang="scss" scoped>
 .left-wrap {
-  @apply items-center flex gap-2;
+  @apply items-center flex gap-3;
+
+  :deep(.button) {
+    @apply text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200;
+  }
 }
 
 .right-wrap {
-  @apply flex;
+  @apply flex items-center;
+
+  :deep(.button) {
+    @apply bg-violet-500 hover:bg-violet-600 text-white border-0 transition-colors duration-200;
+
+    &:disabled {
+      @apply bg-slate-700/50 text-slate-500;
+    }
+  }
 }
 
 ::v-deep .file-uploads {
@@ -394,7 +406,7 @@ export default {
   }
 
   &:hover button {
-    @apply dark:bg-slate-800 bg-slate-100;
+    @apply bg-slate-800/50 text-slate-100;
   }
 }
 </style>
